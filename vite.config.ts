@@ -4,7 +4,7 @@ import dts from "vite-plugin-dts"
 import { resolve } from "path"
 
 export default defineConfig({
-	plugins: [react(), dts({ insertTypesEntry: true, exclude: ["**/*.stories.tsx"] })],
+	plugins: [react(), dts({ insertTypesEntry: true, exclude: ["**/*.stories.tsx"], rollupTypes: true })],
 	build: {
 		lib: {
 			entry: resolve(__dirname, "src/index.ts"),

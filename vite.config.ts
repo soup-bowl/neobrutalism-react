@@ -4,12 +4,12 @@ import dts from "vite-plugin-dts"
 import { resolve } from "path"
 
 export default defineConfig({
-	plugins: [react(), dts({ insertTypesEntry: true })],
+	plugins: [react(), dts({ insertTypesEntry: true, exclude: ["**/*.stories.tsx"] })],
 	build: {
 		lib: {
 			entry: resolve(__dirname, "src/index.ts"),
-			name: "UILibrary",
-			fileName: (format) => `ui-library.${format}.js`,
+			name: "SoupbowlBrutalism",
+			fileName: (format) => `neobrute-ui-library.${format}.js`,
 			formats: ["es", "umd"],
 		},
 		rollupOptions: {

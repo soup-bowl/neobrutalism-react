@@ -1,0 +1,29 @@
+{
+	"name": "@soupbowl/neobrutalism-react",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"serve": "vite preview",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build",
+		"format": "prettier . --write"
+	},
+	"dependencies": {
+		"reakit": "^1.0.0"
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^3.2.6",
+		"@storybook/addon-essentials": "^8.6.12",
+		"@storybook/addon-links": "^8.6.12",
+		"@storybook/cli": "^8.6.12",
+		"@storybook/react": "^8.6.12",
+		"@storybook/react-vite": "^8.6.12",
+		"@storybook/theming": "^8.6.12",
+		"@vitejs/plugin-react": "^4.4.1",
+		"prettier": "^3.5.3",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.5"
+	}
+}

@@ -1,7 +1,7 @@
 import Button, { BrutalistButtonProps } from "../components/Button"
 
 export default {
-	title: "Example/Button",
+	title: "Controls/Button",
 	component: Button,
 	argTypes: {
 		// Add controls for props if needed
@@ -17,14 +17,6 @@ export const Primary = {
 	args: {
 		label: "Primary Button",
 		onClick: () => alert("Primary Button Clicked!"),
-	},
-}
-
-export const Secondary = {
-	...Template.bind({}),
-	args: {
-		label: "Secondary Button",
-		onClick: () => alert("Secondary Button Clicked!"),
 	},
 }
 

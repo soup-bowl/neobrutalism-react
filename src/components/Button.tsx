@@ -1,40 +1,72 @@
-import { boxy, colorMap } from "../definitions"
-import React from "react"
+import React, { ButtonHTMLAttributes, useEffect, useState } from "react"
+import "./Button.css"
 
-export type BrutalistButtonProps = {
-	variant?: "primary" | "secondary"
-	size?: "regular" | "small"
-	label: string
-	colour?: "primary" | "success" | "warning" | "danger"
+export interface NormalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+	active?: boolean
+}
+
+export const AttentionButton = ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => (
+	<button className="attention-button" {...props}>
+		{children}
+	</button>
+)
+
+export const AttentionLink = ({
+	disabled,
+	href,
+	children,
+}: {
+	disabled?: boolean
+	href?: string
 	children: React.ReactNode
-	style?: React.CSSProperties
-} & React.ComponentProps<"button">
+}) => (
+	<a href={href} className={`attention-link ${disabled ? "disabled" : ""}`}>
+		{children}
+	</a>
+)
 
-const Button: React.FC<BrutalistButtonProps> = ({
-	variant = "primary",
-	size = "regular",
-	colour = "primary",
-	label,
-	style,
-	...props
-}) => {
-	const defaultStyles: React.CSSProperties = {
-		cursor: "pointer",
-		backgroundColor: colorMap[colour],
-		paddingRight: size === "regular" ? "2rem" : ".5rem",
-		paddingLeft: size === "regular" ? "2rem" : ".5rem",
-		paddingTop: size === "regular" ? ".5rem" : "0",
-		paddingBottom: size === "regular" ? ".5rem" : "0",
-		height: size === "regular" ? "2.75rem" : "1.5rem",
-		borderWidth: 2,
-		borderColor: "black",
-		borderStyle: "solid",
-		boxShadow: size === "regular" ? boxy("4") : boxy("2"),
-	}
+export const Button = ({ active, ...rest }: NormalButtonProps) => (
+	<button className={`normal-button ${active ? "active" : ""}`} {...rest} />
+)
+
+export const ButtonGroup = ({ children }: { children: React.ReactNode }) => (
+	<div className="button-group">{children}</div>
+)
+
+export const ScrollButtons = ({
+	buttonUp,
+	buttonDown,
+	onUp,
+	onDown,
+}: {
+	buttonUp: React.ReactNode
+	buttonDown: React.ReactNode
+	onUp: () => void
+	onDown: () => void
+}) => (
+	<div className="scroll-buttons">
+		<button onClick={onDown}>{buttonDown}</button>
+		<button onClick={onUp}>{buttonUp}</button>
+	</div>
+)
+
+export const ScrollToTopButton = ({ buttonUp }: { buttonUp: React.ReactNode }) => {
+	const [showTopButton, setShowTopButton] = useState(false)
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setShowTopButton(window.scrollY > 300)
+		}
+		window.addEventListener("scroll", handleScroll)
+		return () => window.removeEventListener("scroll", handleScroll)
+	}, [])
 
 	return (
-		<button style={{ ...defaultStyles, ...style }} {...props}>
-			{label}
+		<button
+			className={`scroll-to-top-button ${showTopButton ? "visible" : ""}`}
+			onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+		>
+			{buttonUp}
 		</button>
 	)
 }

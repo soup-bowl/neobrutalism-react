@@ -1,0 +1,104 @@
+.social-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.social-panel {
+	display: grid;
+	gap: 20px;
+	grid-template-columns: repeat(3, auto);
+}
+
+@media only screen and (max-width: 1050px) {
+	.social-panel {
+		grid-template-columns: repeat(2, auto);
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.social-panel {
+		gap: 20px;
+	}
+	.social-set {
+		height: 6.4rem;
+		width: 11rem;
+	}
+	.social-set .label {
+		font-size: 1.5rem;
+	}
+	.social-set .icon {
+		font-size: 3rem;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.social-panel {
+		grid-template-columns: auto;
+	}
+}
+
+.social-set {
+	position: relative;
+	width: 18rem;
+	height: 10rem;
+	overflow: hidden;
+	text-align: center;
+	box-shadow: 4px 4px 0px #000;
+	border: 2px solid black;
+	transition: 0.4s ease;
+}
+
+.social-set::before {
+	content: "";
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	opacity: 0;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(5px);
+	transition: 0.4s ease;
+}
+
+.social-set:hover::before,
+.social-set:active::before,
+.social-set:focus::before {
+	opacity: 1;
+}
+
+.icon {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s ease;
+	filter: drop-shadow(3px 3px 0 black);
+	font-size: 4rem;
+}
+
+.label {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s ease;
+	font-weight: 500;
+	font-size: 1.5rem;
+	color: #fff;
+	text-shadow: 2px 2px #000;
+	opacity: 0;
+}
+
+.social-set:hover .label,
+.social-set:active .label,
+.social-set:focus .label {
+	opacity: 1;
+}

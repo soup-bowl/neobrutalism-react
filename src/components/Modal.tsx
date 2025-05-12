@@ -1,116 +1,72 @@
-import React from "react"
+import { ReactNode, useCallback, useEffect, useState } from "react"
+import "./Modal.css"
 
-export type BrutalistModalProps = {
-	children: React.ReactNode
-	style?: React.CSSProperties
-} & React.ComponentProps<"div">
+export interface ModalProps {
+	title: string
+	open?: boolean
+	large?: boolean
+	onClose: () => void
+	children: ReactNode
+}
 
-export const Modal: React.FC<BrutalistModalProps> = ({ children, style, ...props }) => {
-	const modalBoundaryStyle: React.CSSProperties = {
-		position: "fixed",
-		zIndex: 1300,
-		inset: 0,
-	}
+const onCloseInteraction = (onClose: () => void) => {
+	document.body.style.overflow = "visible"
+	onClose()
+}
 
-	const modalHiderStyle: React.CSSProperties = {
-		position: "fixed",
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "center",
-		inset: "0px",
-		backgroundColor: "rgba(0, 0, 0, 0.75)",
-		zIndex: -1,
-		opacity: 0.75,
-	}
+export const Modal = ({ title, open, large, onClose, children }: ModalProps) => {
+	const [isClosing, setIsClosing] = useState(false)
+	const [isBackdropVisible, setIsBackdropVisible] = useState(false)
 
-	const modalBackgroundStyle: React.CSSProperties = {
-		height: "100%",
-		outline: 0,
-		display: "flex",
-		justifyContent: "center",
-		alignItems: "center",
-	}
+	const handleClose = useCallback(() => {
+		setIsClosing(true)
+		setIsBackdropVisible(false)
 
-	const modalBoxStyle: React.CSSProperties = {
-		backgroundColor: "#C5A7C5",
-		margin: "32px",
-		position: "relative",
-		overflowY: "auto",
-		display: "flex",
-		flexDirection: "column",
-		width: "90vw",
-		maxHeight: "calc(100% - 64px)",
-		minWidth: "200px",
-		border: "2px solid black",
-		boxShadow: "8px 8px 0px #000",
-	}
+		const animationDuration = 300
+		setTimeout(() => {
+			onCloseInteraction(onClose)
+			setIsClosing(false)
+		}, animationDuration)
+	}, [onClose])
 
-	return (
-		<div style={modalBoundaryStyle}>
-			<div style={modalHiderStyle} />
-			<div style={modalBackgroundStyle}>
-				<div style={{ ...modalBoxStyle, ...style }} {...props}>
-					{children}
+	useEffect(() => {
+		document.getElementById("modal")?.addEventListener("click", (e) => {
+			if (e.target instanceof HTMLElement) {
+				if (!e.target.closest("#modalbox")) {
+					handleClose()
+				}
+			}
+		})
+
+		if (open) {
+			setIsClosing(false)
+			setIsBackdropVisible(true)
+		}
+	}, [open, handleClose])
+
+	if (open || isClosing) {
+		document.body.style.overflow = "hidden"
+		return (
+			<div className="modal-control" id="modal">
+				<div className={`modal-backdrop ${isBackdropVisible ? "visible" : "hidden"}`} />
+				<div className="modal-background">
+					<div
+						id="modalbox"
+						className={`modal-box ${open && !isClosing ? "open" : "close"}`}
+						style={{ maxWidth: large ? "1200px" : "600px" }}
+					>
+						<div className="modal-header">
+							{title}
+							<button className="modal-close" onClick={handleClose}>
+								×
+							</button>
+						</div>
+						<div className="modal-body">{children}</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	)
-}
-
-export type BrutalistModalHeaderProps = {
-	children: React.ReactNode
-	style?: React.CSSProperties
-} & React.ComponentProps<"h2">
-
-export const ModalHeader: React.FC<BrutalistModalHeaderProps> = ({ children, style, ...props }) => {
-	const headerStyle: React.CSSProperties = {
-		padding: "16px 24px",
-		flex: "0 0 auto",
-		lineHeight: 0,
-		fontSize: "1.25rem",
+		)
+	} else {
+		return <></>
 	}
-
-	return (
-		<h2 style={{ ...headerStyle, ...style }} {...props}>
-			{children}
-		</h2>
-	)
-}
-
-export type BrutalistModalBodyProps = {
-	children: React.ReactNode
-	style?: React.CSSProperties
-} & React.ComponentProps<"div">
-export const ModalBody: React.FC<BrutalistModalBodyProps> = ({ children, style, ...props }) => {
-	const bodyStyle: React.CSSProperties = {
-		padding: "16px 24px",
-		flex: "1 1 auto",
-		overflowY: "auto",
-		borderTop: "2px solid black",
-	}
-
-	return (
-		<div style={{ ...bodyStyle, ...style }} {...props}>
-			{children}
-		</div>
-	)
-}
-
-export type BrutalistModalCloseBoxProps = {
-	style?: React.CSSProperties
-} & React.ComponentProps<"button">
-
-export const ModalCloseBox: React.FC<BrutalistModalCloseBoxProps> = ({ style, ...props }) => {
-	const headerStyle: React.CSSProperties = {
-		padding: "16px 24px",
-		flex: "0 0 auto",
-		lineHeight: 0,
-		fontSize: "1.25rem",
-	}
-
-	return (
-		<button style={{ ...headerStyle, ...style }} {...props}>
-			Close
-		</button>
-	)
 }

@@ -1,0 +1,93 @@
+.attention-button {
+	cursor: pointer;
+	background-color: var(--primary-color);
+	border: 2px solid black;
+	box-shadow: 4px 4px 0px #000;
+	padding: 10px 15px;
+	font-size: 1.25em;
+}
+
+.attention-link {
+	background-color: var(--primary-color);
+	border: 2px solid black;
+	box-shadow: 4px 4px 0px #000;
+	padding: 10px 15px;
+	font-size: 1.25em;
+	color: black;
+	text-shadow: none;
+	text-decoration: none;
+}
+
+.attention-link.disabled {
+	background-color: grey;
+	pointer-events: none;
+}
+
+.normal-button {
+	cursor: pointer;
+	background-color: #ffbe96;
+	border: 2px solid black;
+	box-shadow: 4px 4px 0px #000;
+	padding: 10px 15px;
+	font-size: 1.25em;
+}
+
+.normal-button.active {
+	background-color: var(--primary-color);
+}
+
+.button-group {
+	display: flex;
+	width: 100%;
+	gap: 10px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.scroll-buttons {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+.scroll-buttons button {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: white;
+	font-size: 3em;
+	width: 75px;
+	height: 75px;
+	filter: drop-shadow(0px 0px 5px black);
+	transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-to-top-button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	cursor: pointer;
+	border-radius: 250em;
+	border: none;
+	background-color: var(--primary-color);
+	font-size: 3em;
+	width: 75px;
+	height: 75px;
+	transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-to-top-button.visible {
+	opacity: 1;
+}
+
+.scroll-to-top-button {
+	opacity: 0;
+}
+
+@media only screen and (max-width: 650px) {
+	.scroll-to-top-button {
+		font-size: 2em;
+		width: 50px;
+		height: 50px;
+	}
+}

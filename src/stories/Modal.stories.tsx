@@ -4,7 +4,7 @@ import { Modal, ModalProps } from "../components/Modal"
 import Button from "../components/Button"
 
 export default {
-	title: "Components/Modal",
+	title: "Layout/Modal",
 	component: Modal,
 	argTypes: {
 		open: { control: "boolean" },

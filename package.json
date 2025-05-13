@@ -11,11 +11,12 @@
 		"LICENSE"
 	],
 	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/",
 		"access": "public"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/soup-bowl/neobrutalism-react.git"
+		"url": "git+https://github.com/soup-bowl/neobrutalism-react.git"
 	},
 	"scripts": {
 		"dev": "vite",

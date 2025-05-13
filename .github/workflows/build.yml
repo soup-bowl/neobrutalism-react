@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: "22"
           scope: "@soupbowl"
-          auth-token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Extract version from tag
         id: extract_version
@@ -32,4 +32,4 @@ jobs:
         run: npm ci
 
       - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/
+        run: npm publish

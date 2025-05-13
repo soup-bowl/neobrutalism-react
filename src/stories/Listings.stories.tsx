@@ -11,7 +11,7 @@ const mockStatuses = {
 			post: {
 				cid: "cid1",
 				author: {
-					avatar: "https://placekitten.com/80/80",
+					avatar: "https://gravatar.com/userimage/42451181/f43c210afe878c3cfcaca31a9d8f4762.jpeg?size=64",
 					handle: "alice.bsky.social",
 					displayName: "Alice",
 				},
@@ -23,7 +23,7 @@ const mockStatuses = {
 				embed: {
 					images: [
 						{
-							thumb: "https://placekitten.com/400/200",
+							thumb: "https://cataas.com/cat?width=400&height=200",
 							aspectRatio: { width: 400, height: 200 },
 						},
 					],
@@ -34,7 +34,7 @@ const mockStatuses = {
 			post: {
 				cid: "cid2",
 				author: {
-					avatar: "https://placekitten.com/81/81",
+					avatar: "https://gravatar.com/userimage/42451181/d9e67a37724e3a32e3dcfdbbf678f9a1.jpeg?size=64",
 					handle: "bob.bsky.social",
 					displayName: "Bob",
 				},

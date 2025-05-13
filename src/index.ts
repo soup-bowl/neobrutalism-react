@@ -9,6 +9,7 @@ export {
 export { default as Card } from "./components/Card"
 export { default as Banner } from "./components/Banner"
 export { Modal } from "./components/Modal"
+export { Social, SocialContainer, SocialPanel } from "./components/Social"
 
 export type { NormalButtonProps } from "./components/Button"
 export type { BrutalistCardProps } from "./components/Card"

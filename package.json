@@ -1,5 +1,5 @@
 {
-	"name": "@soupbowl/neobrutalism-react",
+	"name": "@soup-bowl/neobrutalism-react",
 	"version": "0.1.0",
 	"private": false,
 	"main": "./dist/neobrutalism-react.umd.js",
@@ -13,7 +13,10 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"repository": "https://github.com/soup-bowl/neobrutalism-react",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/soup-bowl/neobrutalism-react.git"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",

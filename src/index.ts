@@ -7,6 +7,7 @@ export {
 	ScrollToTopButton,
 } from "./components/Button"
 export { default as Card } from "./components/Card"
+export { ListingItem, ListingItemGroup, ListingSocialItem } from "./components/Listings"
 export { default as Banner } from "./components/Banner"
 export { Modal } from "./components/Modal"
 export { Social, SocialContainer, SocialPanel } from "./components/Social"

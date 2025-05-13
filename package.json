@@ -13,6 +13,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"repository": "https://github.com/soup-bowl/neobrutalism-react",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",

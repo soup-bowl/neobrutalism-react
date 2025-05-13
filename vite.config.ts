@@ -8,8 +8,8 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: resolve(__dirname, "src/index.ts"),
-			name: "SoupbowlBrutalism",
-			fileName: (format) => `neobrute-ui-library.${format}.js`,
+			name: "NeoBrutalismReact",
+			fileName: (format) => `neobrutalism-react.${format}.js`,
 			formats: ["es", "umd"],
 		},
 		rollupOptions: {

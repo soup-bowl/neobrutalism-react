@@ -2,8 +2,8 @@
 	"name": "@soupbowl/neobrutalism-react",
 	"version": "0.1.0",
 	"private": false,
-	"main": "./dist/ui-library.umd.js",
-	"module": "./dist/ui-library.es.js",
+	"main": "./dist/neobrutalism-react.umd.js",
+	"module": "./dist/neobrutalism-react.es.js",
 	"types": "./dist/index.d.ts",
 	"files": [
 		"dist",
